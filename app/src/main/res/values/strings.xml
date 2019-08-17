@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Bookeeper</string>
+    <string name="title_activity_photo">PhotoActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="days_remaining">Days Remaining</string>
+    <string name="add_book">ADD BOOK</string>
+    <string name="book_deleted">1 Book deleted</string>
+    <string name="no_books">No Books Added</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_book">Book Name</string>
+    <string name="book_man">Book Man</string>
+    <string name="book_name">Book Name Here</string>
+    <string name="book_error_msg">Please enter book name</string>
+    <string name="date_error_msg">Please select due date</string>
+    <string name="select_due_date">Select Due Date</string>
+    <string name="first_time">FirstTime</string>
+    <string name="shared_preference_key">"FIRST_TIME"</string>
+    <string name="slide1_desc">"Do you always forget to return the book on or before the due date?"</string>
+    <string name="slide2_desc">"Don't worry, I'm here to help you."</string>
+    <string name="slide3_desc">"Add your book here, I will notify you before the due date"</string>
+    <string name="slide_title_1">"Welcome"</string>
+    <string name="slide_title_2">Help</string>
+    <string name="slide_title_3">"Notification"</string>
+</resources>
