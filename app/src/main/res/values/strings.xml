@@ -16,9 +16,10 @@
     <string name="book_error_msg">Please enter book name</string>
     <string name="date_error_msg">Please select due date</string>
     <string name="select_due_date">Select Due Date</string>
+    <string name="notification_message">"You have a book to return/renew"</string>
     <string name="first_time">FirstTime</string>
     <string name="shared_preference_key">"FIRST_TIME"</string>
-    <string name="slide1_desc">"Do you always forget to return the book on or before the due date?"</string>
+    <string name="slide1_desc">"Do you always forget to return the book before the due date?"</string>
     <string name="slide2_desc">"Don't worry, I'm here to help you."</string>
     <string name="slide3_desc">"Add your book here, I will notify you before the due date"</string>
     <string name="slide_title_1">"Welcome"</string>

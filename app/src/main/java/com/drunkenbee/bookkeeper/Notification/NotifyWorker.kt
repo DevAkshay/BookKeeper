@@ -6,6 +6,8 @@ import android.app.NotificationManager
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.media.AudioAttributes
+import android.media.RingtoneManager
 import android.os.Build
 import androidx.work.Worker
 import androidx.work.WorkerParameters
@@ -20,7 +22,7 @@ class NotifyWorker(appContext: Context, workerParams: WorkerParameters) : Worker
     override fun doWork(): Result {
         // Do the work here--in this case, upload the images.
 
-        var books = AppDatabase.getInstance(this.applicationContext).bookDataDAO().getAllList()
+        val books = AppDatabase.getInstance(this.applicationContext).bookDataDAO().getAllList()
 
         for(book in books)
         {
@@ -40,10 +42,10 @@ class NotifyWorker(appContext: Context, workerParams: WorkerParameters) : Worker
     private fun triggerNotification(book: BookData){
 
         createChannel()
-        var mNotification: Notification
+        val mNotification: Notification
         val context = this.applicationContext
-        var notificationManager: NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val title = "You have a book to return/renew"
+        val notificationManager: NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val title = this.applicationContext.getString(R.string.notification_message)
         val message = "Book: "+book.bookName+"     Due Date: "+book.date+"/"+book.month+"/"+book.year
         //val res = this.resources
 
@@ -102,7 +104,7 @@ class NotifyWorker(appContext: Context, workerParams: WorkerParameters) : Worker
             notificationChannel.setShowBadge(true)
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.parseColor("#e8334a")
-            notificationChannel.description = "You have a book to return/renew"
+            notificationChannel.description = this.applicationContext.getString(R.string.notification_message)
             notificationChannel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             notificationManager.createNotificationChannel(notificationChannel)
         }

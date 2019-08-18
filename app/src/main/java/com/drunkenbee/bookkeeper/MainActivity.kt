@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun showUndoSnack(pos: Int, book: BookData?) {
-                    var isUndo = false;
+                    var isUndo = false
                     val snackbar = Snackbar.make(
                         mainLinearLayout, resources.getText(R.string.book_deleted),
                         Snackbar.LENGTH_LONG
@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
     {
         if (book != null) {
             bookList.add(pos,book)
-        };
+        }
         adapter.notifyItemInserted(pos)
     }
 
@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         datePickerTimeline.setInitialDate(currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE))
         datePickerTimeline.setOnDateSelectedListener(object : OnDateSelectedListener {
             override fun onDateSelected(year: Int, month: Int, day: Int, dayOfWeek: Int) {
-                dueDate.set(year, month, day)
+                    dueDate.set(year, month, day)
             }
 
             override fun onDisabledDateSelected(year: Int, month: Int, day: Int, dayOfWeek: Int, isDisabled: Boolean) {
@@ -207,9 +207,13 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("RestrictedApi")
     fun setNotificationWorker()
     {
-        val notifyWorkRequest = PeriodicWorkRequestBuilder<NotifyWorker>(24, TimeUnit.HOURS)
+        //notifying at 9am in the morning
+        val currentTime = Calendar.getInstance()
+        val alarmTime = 24 - currentTime.get(Calendar.HOUR_OF_DAY) + 9 // 24hrs - currentHour + timeToNotify
+        Log.e("Notification time "+currentTime.get(Calendar.HOUR_OF_DAY),""+alarmTime)
+        val notifyWorkRequest = PeriodicWorkRequestBuilder<NotifyWorker>(alarmTime.toLong(), TimeUnit.HOURS)
             .build()
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork("Notification",ExistingPeriodicWorkPolicy.KEEP,notifyWorkRequest)
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork("Notification",ExistingPeriodicWorkPolicy.REPLACE,notifyWorkRequest)
     }
 
 
